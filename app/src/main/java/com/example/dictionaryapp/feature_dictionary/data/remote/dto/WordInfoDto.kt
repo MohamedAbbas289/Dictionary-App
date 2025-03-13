@@ -1,19 +1,19 @@
 package com.example.dictionaryapp.feature_dictionary.data.remote.dto
 
-import com.example.dictionaryapp.feature_dictionary.domain.model.WordInfo
+import com.example.dictionaryapp.feature_dictionary.data.local.entity.WordInfoEntity
 
 data class WordInfoDto(
     val licenseDto: LicenseDto?,
-    val meaning: List<MeaningDto>?,
+    val meanings: List<MeaningDto>?,
     val phonetic: String?,
     val phonetics: List<PhoneticDto>?,
     val sourceUrls: List<String>?,
-    val word: String?
+    val word: String
 ) {
-    fun toWordInfo(): WordInfo {
-        return WordInfo(
+    fun toWordInfoEntity(): WordInfoEntity {
+        return WordInfoEntity(
             license = licenseDto?.toLicense(),
-            meaning = meaning?.map { it.toMeaning() },
+            meanings = meanings?.map { it.toMeaning() },
             phonetic = phonetic.toString(),
             phonetics = phonetics?.map { it.toPhonetic() },
             sourceUrls = sourceUrls,
